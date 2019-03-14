@@ -1,0 +1,8 @@
+prefix=/home/xiangyu/Library/CORB-SLAM/src/corbslam_client/devel
+
+Name: corbslam_client
+Description: Description of corbslam_client
+Version: 0.0.0
+Cflags: -I/home/xiangyu/Library/CORB-SLAM/src/corbslam_client/devel/include
+Libs: -L/home/xiangyu/Library/CORB-SLAM/src/corbslam_client/devel/lib 
+Requires: 

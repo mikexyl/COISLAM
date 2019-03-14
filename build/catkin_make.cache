@@ -1,0 +1,2 @@
+corbslam_client:corbslam_server:rpg_trajectory_evaluation
+-DCATKIN_DEVEL_PREFIX=/home/xiangyu/Library/IISLAM/devel -DCMAKE_INSTALL_PREFIX=/home/xiangyu/Library/IISLAM/install -G Unix Makefiles

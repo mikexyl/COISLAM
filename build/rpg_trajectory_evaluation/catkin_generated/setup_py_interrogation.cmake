@@ -1,0 +1,6 @@
+set(rpg_trajectory_evaluation_SETUP_PY_VERSION "0.0.0")
+set(rpg_trajectory_evaluation_SETUP_PY_SCRIPTS "")
+set(rpg_trajectory_evaluation_SETUP_PY_PACKAGES "rpg_trajectory_evaluation")
+set(rpg_trajectory_evaluation_SETUP_PY_PACKAGE_DIRS "src/rpg_trajectory_evaluation")
+set(rpg_trajectory_evaluation_SETUP_PY_MODULES "")
+set(rpg_trajectory_evaluation_SETUP_PY_MODULE_DIRS "")

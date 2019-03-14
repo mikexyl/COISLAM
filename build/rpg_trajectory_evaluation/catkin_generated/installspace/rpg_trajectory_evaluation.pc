@@ -1,0 +1,8 @@
+prefix=/home/xiangyu/Library/IISLAM/install
+
+Name: rpg_trajectory_evaluation
+Description: Description of rpg_trajectory_evaluation
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/xiangyu/Library/IISLAM/install/lib 
+Requires: 
