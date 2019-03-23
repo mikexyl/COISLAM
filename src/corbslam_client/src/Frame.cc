@@ -812,6 +812,9 @@ cv::Mat Frame::UnprojectStereo(const int &i)
     void Frame::ExtractII(const cv::Mat& im)
     {
       // cout<<"channels: "<<im.channels()<<endl;
+      if(im.channels()!=3){
+        return;
+      }
       float alpha=0.47; //magic number
       vector<Mat> channels(3);
       split(im, channels);

@@ -1037,6 +1037,19 @@ actionlib_generate_messages_nodejs/fast:
 .PHONY : actionlib_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named corbslam_client_stereo_real_kitti
+
+# Build rule for target.
+corbslam_client_stereo_real_kitti: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 corbslam_client_stereo_real_kitti
+.PHONY : corbslam_client_stereo_real_kitti
+
+# fast build rule for target.
+corbslam_client_stereo_real_kitti/fast:
+	$(MAKE) -f corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build.make corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build
+.PHONY : corbslam_client_stereo_real_kitti/fast
+
+#=============================================================================
 # Target rules for targets named actionlib_generate_messages_py
 
 # Build rule for target.
@@ -1415,6 +1428,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_nodejs"
+	@echo "... corbslam_client_stereo_real_kitti"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_eus"

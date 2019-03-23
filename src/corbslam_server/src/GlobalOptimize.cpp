@@ -22,6 +22,8 @@
 
 namespace CORBSLAM_SERVER{
 
+  ofstream computeSim3_file("sim3.txt");
+
     GlobalOptimize::GlobalOptimize(ServerMap *tgm) {
 
         this->globalMAp = tgm;
@@ -50,6 +52,8 @@ namespace CORBSLAM_SERVER{
 
     bool GlobalOptimize::ComputeSim3()
     {
+      computeSim3_file<<"----------------"<<endl;
+
         // For each consistent loop candidate we try to compute a Sim3
 
         cout << "ComputeSim3 start!\n";
@@ -57,7 +61,7 @@ namespace CORBSLAM_SERVER{
 
         // We compute first ORB matches for each candidate
         // If enough matches are found, we setup a Sim3Solver
-        ORBmatcher matcher(0.75,true);
+        ORBmatcher matcher(0.9,false);
 
         vector<Sim3Solver*> vpSim3Solvers;
         vpSim3Solvers.resize(nInitialCandidates);
@@ -77,6 +81,8 @@ namespace CORBSLAM_SERVER{
             // avoid that local mapping erase it while it is being processed in this thread
             pKF->SetNotErase();
 
+            computeSim3_file<<"test pKF->isBad(): "<<pKF->isBad()<<endl;
+
             if(pKF->isBad())
             {
                 vbDiscarded[i] = true;
@@ -84,8 +90,9 @@ namespace CORBSLAM_SERVER{
             }
 
             int nmatches = matcher.SearchByBoW(mpCurrentKF,pKF,vvpMapPointMatches[i]);
+            computeSim3_file<<"test nmatches: "<<nmatches<<endl;
 
-            if(nmatches<15)
+            if(nmatches<10)
             {
                 vbDiscarded[i] = true;
                 continue;
@@ -93,7 +100,7 @@ namespace CORBSLAM_SERVER{
             else
             {
                 Sim3Solver* pSolver = new Sim3Solver(mpCurrentKF,pKF,vvpMapPointMatches[i],mbFixScale);
-                pSolver->SetRansacParameters(0.99,20,300);
+                pSolver->SetRansacParameters(0.99,10,300);
                 vpSim3Solvers[i] = pSolver;
             }
 
@@ -101,7 +108,7 @@ namespace CORBSLAM_SERVER{
         }
 
         bool bMatch = false;
-
+        computeSim3_file<<"nCandidates = "<<nCandidates<<endl;;
         // Perform alternatively RANSAC iterations for each candidate
         // until one is succesful or all fail
         while(nCandidates>0 && !bMatch)
@@ -145,6 +152,8 @@ namespace CORBSLAM_SERVER{
 
                     g2o::Sim3 gScm(Converter::toMatrix3d(R),Converter::toVector3d(t),s);
                     const int nInliers = Optimizer::OptimizeSim3(mpCurrentKF, pKF, vpMapPointMatches, gScm, 10, mbFixScale);
+
+                    computeSim3_file<<"nInliers = "<<nInliers<<endl;;
 
                     // If optimization is succesful stop ransacs and continue
                     if(nInliers>=20)

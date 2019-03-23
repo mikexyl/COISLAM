@@ -246,6 +246,12 @@ target_link_libraries(corbslam_client_stereo_robotcar
         ${catkin_LIBRARIES}
         ${PROJECT_NAME})
 
+add_executable(corbslam_client_stereo_real_kitti
+        Examples/Stereo/stereo_real_kitti.cc)
+target_link_libraries(corbslam_client_stereo_real_kitti
+        ${catkin_LIBRARIES}
+        ${PROJECT_NAME})
+
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/Monocular)
 

@@ -100,6 +100,7 @@
 /home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir
 /home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/sensor_msgs_generate_messages_eus.dir
 /home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/actionlib_generate_messages_nodejs.dir
+/home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir
 /home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/actionlib_generate_messages_py.dir
 /home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/actionlib_generate_messages_lisp.dir
 /home/xiangyu/Library/IISLAM/build/corbslam_client/CMakeFiles/actionlib_msgs_generate_messages_eus.dir

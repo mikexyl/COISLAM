@@ -63,6 +63,7 @@ using namespace std;
 namespace ORB_SLAM2
 {
 
+  ofstream pnpsolver_log("pnpslover_log.txt");
 
 PnPsolver::PnPsolver(const Frame &F, const vector<MapPoint*> &vpMapPointMatches):
     pws(0), us(0), alphas(0), pcs(0), maximum_number_of_correspondences(0), number_of_correspondences(0), mnInliersi(0),
@@ -93,7 +94,7 @@ PnPsolver::PnPsolver(const Frame &F, const vector<MapPoint*> &vpMapPointMatches)
                 mvP3Dw.push_back(cv::Point3f(Pos.at<float>(0),Pos.at<float>(1), Pos.at<float>(2)));
 
                 mvKeyPointIndices.push_back(i);
-                mvAllIndices.push_back(idx);               
+                mvAllIndices.push_back(idx);
 
                 idx++;
             }
@@ -204,7 +205,7 @@ void PnPsolver::SetRansacParameters(double probability, int minInliers, int maxI
 cv::Mat PnPsolver::find(vector<bool> &vbInliers, int &nInliers)
 {
     bool bFlag;
-    return iterate(mRansacMaxIts,bFlag,vbInliers,nInliers);    
+    return iterate(mRansacMaxIts,bFlag,vbInliers,nInliers);
 }
 
 cv::Mat PnPsolver::iterate(int nIterations, bool &bNoMore, vector<bool> &vbInliers, int &nInliers)
@@ -283,11 +284,14 @@ cv::Mat PnPsolver::iterate(int nIterations, bool &bNoMore, vector<bool> &vbInlie
         }
     }
 
+    pnpsolver_log<<"test mnIterations = "<<mnIterations<<" "<<mRansacMaxIts<<" "<<mnBestInliers<<" "<<mRansacMinInliers<<endl;
+
     if(mnIterations>=mRansacMaxIts)
     {
         bNoMore=true;
         if(mnBestInliers>=mRansacMinInliers)
         {
+          pnpsolver_log<<"test pnpsolver succeed: "<<mBestTcw.empty()<<endl;
             nInliers=mnBestInliers;
             vbInliers = vector<bool>(mvpMapPointMatches.size(),false);
             for(int i=0; i<N; i++)

@@ -541,7 +541,7 @@ namespace CORBSLAM_SERVER{
             //   candidateKFs.clear();
             //   iiOK=detectKeyFrameInServerMap( globalMap, tKF, newTcw, candidateKFs, true);
             // }
-            result_compare<<iiOK<<endl;
+            result_compare<<rgbOK<<endl;
 
             // if((rgbOK||iiOK)&&candidateKFs.size()){
             //   matchedKF.push_back(tKF);
@@ -799,6 +799,7 @@ namespace CORBSLAM_SERVER{
       // cout<<"test MF detectKeyFrameInServerMap mode= "<<ifII<<endl;
       // if(ifII) cout<<"test MF II detectKeyFrameInServerMap loc 1"<<endl;
         std::vector<KeyFrame*> vpCandidateKFs = sMap->DetectMapFusionCandidatesFromDB( tKF ,ifII);
+        result_compare<<"test: vpCandidateKFs.size() = "<<vpCandidateKFs.size()<<endl;
         // if(ifII) cout<<"test MF II detectKeyFrameInServerMap loc 2"<<endl;
 
         // if(ifII)
@@ -813,7 +814,7 @@ namespace CORBSLAM_SERVER{
 
         // We perform first an ORB matching with each candidate
         // If enough matches are found we setup a PnP solver
-        ORBmatcher matcher(0.75,true);
+        ORBmatcher matcher(0.9,false);
 
         vector<PnPsolver*> vpPnPsolvers;
         vpPnPsolvers.resize(nKFs);
@@ -834,6 +835,8 @@ namespace CORBSLAM_SERVER{
             else
             {
                 int nmatches = matcher.SearchByBoWInServer(pKF,tKF,vvpMapPointMatches[i]);
+                result_compare<<"test: SearchByBoWInServer.nmatches = "<<nmatches<<endl;
+
                 if(nmatches<15)
                 {
                     vbDiscarded[i] = true;
@@ -843,7 +846,7 @@ namespace CORBSLAM_SERVER{
                 {
                     PnPsolver* pSolver = new PnPsolver( (*tKF) ,vvpMapPointMatches[i]);
 
-                    pSolver->SetRansacParameters(0.99,10,300,4,0.5,5.991);
+                    pSolver->SetRansacParameters(0.99,10,300,4,0.5,40);
                     vpPnPsolvers[i] = pSolver;
                     nCandidates++;
                     candidateKFs.push_back( pKF );
@@ -856,6 +859,8 @@ namespace CORBSLAM_SERVER{
         // Until we found a camera pose supported by enough inliers
         bool bMatch = false;
         ORBmatcher matcher2(0.9,true);
+
+        result_compare<<"test: nCandidates loc 1 = "<<nCandidates<<endl;
 
         while(nCandidates>0 && !bMatch)
         {
@@ -871,6 +876,7 @@ namespace CORBSLAM_SERVER{
 
                 PnPsolver* pSolver = vpPnPsolvers[i];
                 cv::Mat Tcw = pSolver->iterate(5,bNoMore,vbInliers,nInliers);
+                result_compare<<"test: Tcw.empty()= "<<Tcw.empty()<<" "<<nInliers<<" "<<bNoMore<<endl;
 
                 // If Ransac reachs max. iterations discard keyframe
                 if(bNoMore)

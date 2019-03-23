@@ -1006,6 +1006,21 @@ actionlib_generate_messages_nodejs/fast:
 .PHONY : actionlib_generate_messages_nodejs/fast
 
 # Convenience name for target.
+corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/rule:
+	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f CMakeFiles/Makefile2 corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/rule
+.PHONY : corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/rule
+
+# Convenience name for target.
+corbslam_client_stereo_real_kitti: corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/rule
+
+.PHONY : corbslam_client_stereo_real_kitti
+
+# fast build rule for target.
+corbslam_client_stereo_real_kitti/fast:
+	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build.make corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build
+.PHONY : corbslam_client_stereo_real_kitti/fast
+
+# Convenience name for target.
 corbslam_client/CMakeFiles/actionlib_generate_messages_py.dir/rule:
 	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f CMakeFiles/Makefile2 corbslam_client/CMakeFiles/actionlib_generate_messages_py.dir/rule
 .PHONY : corbslam_client/CMakeFiles/actionlib_generate_messages_py.dir/rule
@@ -1232,6 +1247,33 @@ Examples/Stereo/stereo_kitti.s: Examples/Stereo/stereo_kitti.cc.s
 Examples/Stereo/stereo_kitti.cc.s:
 	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f corbslam_client/CMakeFiles/corbslam_client_stereo_kitti.dir/build.make corbslam_client/CMakeFiles/corbslam_client_stereo_kitti.dir/Examples/Stereo/stereo_kitti.cc.s
 .PHONY : Examples/Stereo/stereo_kitti.cc.s
+
+Examples/Stereo/stereo_real_kitti.o: Examples/Stereo/stereo_real_kitti.cc.o
+
+.PHONY : Examples/Stereo/stereo_real_kitti.o
+
+# target to build an object file
+Examples/Stereo/stereo_real_kitti.cc.o:
+	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build.make corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/Examples/Stereo/stereo_real_kitti.cc.o
+.PHONY : Examples/Stereo/stereo_real_kitti.cc.o
+
+Examples/Stereo/stereo_real_kitti.i: Examples/Stereo/stereo_real_kitti.cc.i
+
+.PHONY : Examples/Stereo/stereo_real_kitti.i
+
+# target to preprocess a source file
+Examples/Stereo/stereo_real_kitti.cc.i:
+	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build.make corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/Examples/Stereo/stereo_real_kitti.cc.i
+.PHONY : Examples/Stereo/stereo_real_kitti.cc.i
+
+Examples/Stereo/stereo_real_kitti.s: Examples/Stereo/stereo_real_kitti.cc.s
+
+.PHONY : Examples/Stereo/stereo_real_kitti.s
+
+# target to generate assembly for a file
+Examples/Stereo/stereo_real_kitti.cc.s:
+	cd /home/xiangyu/Library/IISLAM/build && $(MAKE) -f corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/build.make corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/Examples/Stereo/stereo_real_kitti.cc.s
+.PHONY : Examples/Stereo/stereo_real_kitti.cc.s
 
 Examples/Stereo/stereo_robotcar.o: Examples/Stereo/stereo_robotcar.cc.o
 
@@ -1977,6 +2019,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_nodejs"
+	@echo "... corbslam_client_stereo_real_kitti"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_eus"
@@ -1997,6 +2040,9 @@ help:
 	@echo "... Examples/Stereo/stereo_kitti.o"
 	@echo "... Examples/Stereo/stereo_kitti.i"
 	@echo "... Examples/Stereo/stereo_kitti.s"
+	@echo "... Examples/Stereo/stereo_real_kitti.o"
+	@echo "... Examples/Stereo/stereo_real_kitti.i"
+	@echo "... Examples/Stereo/stereo_real_kitti.s"
 	@echo "... Examples/Stereo/stereo_robotcar.o"
 	@echo "... Examples/Stereo/stereo_robotcar.i"
 	@echo "... Examples/Stereo/stereo_robotcar.s"

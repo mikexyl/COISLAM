@@ -417,6 +417,7 @@ ofstream kfdLog("kfd.txt");
 
       for (list<pair<float, KeyFrame *> >::iterator it = lAccScoreAndMatch.begin(), itend = lAccScoreAndMatch.end();
            it != itend; it++) {
+             kfdLog<<"test scores: "<<it->first<<" "<<bestAccScore<<" "<<(float)it->first/bestAccScore<<endl;
           if (it->first > minScoreToRetain) {
               KeyFrame *pKFi = it->second;
               if (!spAlreadyAddedKF.count(pKFi)) {

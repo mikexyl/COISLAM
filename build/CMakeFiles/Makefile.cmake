@@ -334,6 +334,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "corbslam_client/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "corbslam_client/CMakeFiles/sensor_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "corbslam_client/CMakeFiles/actionlib_generate_messages_nodejs.dir/DependInfo.cmake"
+  "corbslam_client/CMakeFiles/corbslam_client_stereo_real_kitti.dir/DependInfo.cmake"
   "corbslam_client/CMakeFiles/actionlib_generate_messages_py.dir/DependInfo.cmake"
   "corbslam_client/CMakeFiles/actionlib_generate_messages_lisp.dir/DependInfo.cmake"
   "corbslam_client/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/DependInfo.cmake"

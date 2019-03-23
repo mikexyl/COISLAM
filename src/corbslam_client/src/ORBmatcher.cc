@@ -34,6 +34,9 @@ using namespace std;
 namespace ORB_SLAM2
 {
 
+  ofstream matcher_log("matcher_log.txt");
+
+
 const int ORBmatcher::TH_HIGH = 100;
 const int ORBmatcher::TH_LOW = 50;
 const int ORBmatcher::HISTO_LENGTH = 30;
@@ -360,6 +363,7 @@ int ORBmatcher::SearchByBoW(KeyFrame* pKF,Frame &F, vector<MapPoint*> &vpMapPoin
                         }
                     }
 
+                  // matcher_log<<"test bestDist1 = "<<bestDist1<<" bestDist2 = "<<bestDist2<<endl;
                     if(bestDist1<=TH_LOW)
                     {
                         if(static_cast<float>(bestDist1)<mfNNratio*static_cast<float>(bestDist2))
